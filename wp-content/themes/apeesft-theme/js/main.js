@@ -257,5 +257,23 @@ jQuery(document).ready(function($) {
             }
         });
     });
+
+    // Scroll to top button
+    const scrollToTopBtn = $('.scroll-to-top');
+    if (scrollToTopBtn.length) {
+        $(window).on('scroll', function() {
+            if ($(window).scrollTop() > 300) {
+                scrollToTopBtn.addClass('visible');
+            } else {
+                scrollToTopBtn.removeClass('visible');
+            }
+        });
+
+        scrollToTopBtn.on('click', function() {
+            $('html, body').animate({
+                scrollTop: 0
+            }, 600);
+        });
+    }
 });
 
