@@ -1,0 +1,110 @@
+# WordPress Core Files (si vous n'incluez pas WordPress complet)
+# wp-admin/
+# wp-includes/
+# wp-*.php
+# xmlrpc.php
+# license.txt
+# readme.html
+
+# Configuration WordPress sensible
+wp-config.php
+wp-config-local.php
+# wp-config-sample.php (gardé comme exemple, mais peut être ignoré si nécessaire)
+
+# Fichiers de cache et temporaires
+*.log
+*.cache
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
+.idea/
+.vscode/
+*.sublime-project
+*.sublime-workspace
+
+# Dépendances
+node_modules/
+vendor/
+composer.lock
+package-lock.json
+yarn.lock
+
+# Fichiers de sauvegarde
+*.bak
+*.backup
+*.old
+*.tmp
+
+# Fichiers de développement
+.env
+.env.local
+.env.*.local
+
+# Fichiers de démo (optionnel - décommentez si vous ne voulez pas inclure la démo)
+# demo/
+
+# Fichiers uploads WordPress (si vous incluez WordPress)
+wp-content/uploads/
+wp-content/upgrade/
+wp-content/backup-db/
+wp-content/advanced-cache.php
+wp-content/wp-cache-config.php
+
+# Fichiers de cache WordPress
+wp-content/cache/
+wp-content/blogs.dir/
+wp-content/upgrade/
+wp-content/backups/
+
+# Fichiers de plugins et thèmes tiers (gardez seulement votre thème personnalisé)
+# wp-content/plugins/
+# wp-content/themes/twenty*/
+# wp-content/themes/index.php
+
+# Base de données
+*.sql
+*.sqlite
+*.db
+
+# Fichiers de logs
+error_log
+debug.log
+*.log
+
+# Fichiers système
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Desktop.ini
+
+# Fichiers de configuration locaux
+.htaccess.local
+.htaccess.backup
+
+# Fichiers de test
+test/
+tests/
+*.test.php
+
+# Fichiers de documentation temporaire
+*.md.bak
+TODO.txt
+
+# Fichiers images temporaires à la racine
+img.JPEG
+*.JPEG
+*.JPG
+*.PNG
+# (gardez seulement les images dans les dossiers organisés)
+
+# Fichiers de scripts de lancement locaux (optionnel)
+# demo/lancer.bat
+# demo/lancer.ps1
+# demo/start-demo.bat
+# demo/start-demo.sh
+

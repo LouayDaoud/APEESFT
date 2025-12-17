@@ -1,0 +1,7 @@
+Pour ajouter une capture d'écran du thème :
+1. Créez une image de 1200x900 pixels
+2. Nommez-la "screenshot.png"
+3. Placez-la dans ce dossier (wp-content/themes/apeesft-theme/)
+
+Cette image sera affichée dans l'interface d'administration WordPress lors de la sélection du thème.
+

@@ -1,0 +1,202 @@
+document.addEventListener('DOMContentLoaded', function() {
+    let childCount = 0;
+    const cotisationBase = 30;
+    const assuranceParEnfant = 15;
+
+    // Ajouter un enfant
+    const addChildBtn = document.getElementById('add-child');
+    if (addChildBtn) {
+        addChildBtn.addEventListener('click', function() {
+            childCount++;
+            const childrenContainer = document.getElementById('children-container');
+            const childHtml = `
+                <div class="child-item" data-child-index="${childCount}">
+                    <h4 style="margin-bottom: 1rem; color: #1e3c72;">Enfant ${childCount}</h4>
+                    <div class="form-group">
+                        <label>Nom *</label>
+                        <input type="text" class="child-nom" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Prénom *</label>
+                        <input type="text" class="child-prenom" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Niveau *</label>
+                        <select class="child-niveau" required>
+                            <option value="">Sélectionner...</option>
+                            <option value="6ème">6ème</option>
+                            <option value="5ème">5ème</option>
+                            <option value="4ème">4ème</option>
+                            <option value="3ème">3ème</option>
+                            <option value="2nde">2nde</option>
+                            <option value="1ère">1ère</option>
+                            <option value="Terminale">Terminale</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Établissement / Section *</label>
+                        <input type="text" class="child-etablissement" required>
+                    </div>
+                    <button type="button" class="remove-child">Supprimer cet enfant</button>
+                </div>
+            `;
+            childrenContainer.insertAdjacentHTML('beforeend', childHtml);
+            updatePricing();
+        });
+    }
+
+    // Supprimer un enfant
+    document.addEventListener('click', function(e) {
+        if (e.target.classList.contains('remove-child')) {
+            e.target.closest('.child-item').remove();
+            childCount--;
+            updatePricing();
+        }
+    });
+
+    // Mettre à jour le calcul des prix
+    function updatePricing() {
+        const children = document.querySelectorAll('.child-item').length;
+        const assuranceTotal = children * assuranceParEnfant;
+        const total = cotisationBase + assuranceTotal;
+
+        const childrenCountEl = document.getElementById('children-count');
+        const assuranceAmountEl = document.getElementById('assurance-amount');
+        const totalAmountEl = document.getElementById('total-amount');
+        const pricingSummary = document.getElementById('pricing-summary');
+
+        if (childrenCountEl) childrenCountEl.textContent = children;
+        if (assuranceAmountEl) assuranceAmountEl.textContent = assuranceTotal + ' DT';
+        if (totalAmountEl) totalAmountEl.textContent = total + ' DT';
+
+        if (pricingSummary) {
+            if (children > 0) {
+                pricingSummary.style.display = 'block';
+            } else {
+                pricingSummary.style.display = 'none';
+            }
+        }
+    }
+
+    // Écouter les changements dans les champs enfants
+    document.addEventListener('input', function(e) {
+        if (e.target.closest('.child-item')) {
+            updatePricing();
+        }
+    });
+
+    document.addEventListener('change', function(e) {
+        if (e.target.closest('.child-item')) {
+            updatePricing();
+        }
+    });
+
+    // Soumission du formulaire d'adhésion
+    const adhesionForm = document.getElementById('adhesion-form');
+    if (adhesionForm) {
+        adhesionForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const messageDiv = document.getElementById('form-message');
+            messageDiv.style.display = 'none';
+            messageDiv.className = '';
+
+            // Collecter les données des enfants
+            const enfants = [];
+            document.querySelectorAll('.child-item').forEach(function(item) {
+                const nom = item.querySelector('.child-nom').value;
+                const prenom = item.querySelector('.child-prenom').value;
+                const niveau = item.querySelector('.child-niveau').value;
+                const etablissement = item.querySelector('.child-etablissement').value;
+
+                if (nom && prenom && niveau && etablissement) {
+                    enfants.push({
+                        nom: nom,
+                        prenom: prenom,
+                        niveau: niveau,
+                        etablissement: etablissement
+                    });
+                }
+            });
+
+            // Collecter les établissements sélectionnés
+            const etablissements = [];
+            document.querySelectorAll('input[name="etablissements[]"]:checked').forEach(function(checkbox) {
+                etablissements.push(checkbox.value);
+            });
+
+            // Calculer le montant total
+            const montantTotal = cotisationBase + (enfants.length * assuranceParEnfant);
+
+            // Validation
+            const parentNom = document.getElementById('parent_nom').value;
+            const parentPrenom = document.getElementById('parent_prenom').value;
+            const parentEmail = document.getElementById('parent_email').value;
+
+            if (!parentNom || !parentPrenom || !parentEmail) {
+                showMessage(messageDiv, 'Veuillez remplir tous les champs obligatoires.', 'error');
+                return;
+            }
+
+            // Simuler l'envoi (dans la vraie version, ce serait une requête AJAX)
+            const submitBtn = adhesionForm.querySelector('button[type="submit"]');
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Envoi en cours...';
+
+            setTimeout(function() {
+                showMessage(messageDiv, 
+                    'Votre demande d\'adhésion a été envoyée avec succès ! Montant total : ' + montantTotal + ' DT', 
+                    'success'
+                );
+                adhesionForm.reset();
+                document.getElementById('children-container').innerHTML = '';
+                childCount = 0;
+                updatePricing();
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Soumettre la demande d\'adhésion';
+            }, 1500);
+        });
+    }
+
+    // Formulaire de contact
+    const contactForm = document.getElementById('contact-form');
+    if (contactForm) {
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const messageDiv = document.getElementById('contact-message');
+            messageDiv.style.display = 'none';
+            messageDiv.className = '';
+
+            const submitBtn = contactForm.querySelector('button[type="submit"]');
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Envoi en cours...';
+
+            setTimeout(function() {
+                showMessage(messageDiv, 'Votre message a été envoyé avec succès !', 'success');
+                contactForm.reset();
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Envoyer';
+            }, 1500);
+        });
+    }
+
+    function showMessage(element, message, type) {
+        element.textContent = message;
+        element.style.display = 'block';
+        element.style.padding = '1rem';
+        element.style.borderRadius = '5px';
+        element.style.marginTop = '1rem';
+
+        if (type === 'success') {
+            element.style.background = '#d4edda';
+            element.style.color = '#155724';
+            element.style.border = '1px solid #c3e6cb';
+        } else {
+            element.style.background = '#f8d7da';
+            element.style.color = '#721c24';
+            element.style.border = '1px solid #f5c6cb';
+        }
+    }
+});
+
