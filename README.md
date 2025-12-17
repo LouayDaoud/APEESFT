@@ -135,5 +135,5 @@ Pour toute question ou problème, contactez l'équipe de développement.
 ---
 
 **Version :** 1.0.0  
-**Dernière mise à jour :** 2024
+**Dernière mise à jour :** 2025
 
