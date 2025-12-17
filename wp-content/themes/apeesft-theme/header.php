@@ -16,6 +16,11 @@
                     <img src="<?php echo get_template_directory_uri(); ?>/logo.jpeg" alt="<?php bloginfo('name'); ?>" class="logo-image" onerror="this.style.display='none'">
                 </a>
             </div>
+            <button class="mobile-menu-toggle" aria-label="Menu mobile">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
             <nav class="main-nav">
                 <?php
                 wp_nav_menu(array(

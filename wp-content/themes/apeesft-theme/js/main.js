@@ -1,4 +1,33 @@
 jQuery(document).ready(function($) {
+    // Menu mobile toggle
+    const mobileMenuToggle = $('.mobile-menu-toggle');
+    const mainNav = $('.main-nav');
+    const navLinks = $('.main-nav a');
+    
+    if (mobileMenuToggle.length && mainNav.length) {
+        mobileMenuToggle.on('click', function() {
+            $(this).toggleClass('active');
+            mainNav.toggleClass('active');
+            $('body').css('overflow', mainNav.hasClass('active') ? 'hidden' : '');
+        });
+        
+        // Fermer le menu quand on clique sur un lien
+        navLinks.on('click', function() {
+            mobileMenuToggle.removeClass('active');
+            mainNav.removeClass('active');
+            $('body').css('overflow', '');
+        });
+        
+        // Fermer le menu quand on clique en dehors
+        $(document).on('click', function(e) {
+            if (!$(e.target).closest('.main-nav, .mobile-menu-toggle').length) {
+                mobileMenuToggle.removeClass('active');
+                mainNav.removeClass('active');
+                $('body').css('overflow', '');
+            }
+        });
+    }
+    
     let childCount = 0;
     const cotisationBase = 30;
     const assuranceParEnfant = 15;

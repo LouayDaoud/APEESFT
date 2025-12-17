@@ -95,12 +95,15 @@ tests/
 *.md.bak
 TODO.txt
 
-# Fichiers images temporaires à la racine
+# Fichiers images temporaires à la racine uniquement
 img.JPEG
-*.JPEG
-*.JPG
-*.PNG
-# (gardez seulement les images dans les dossiers organisés)
+# Ne pas ignorer les images dans les dossiers organisés (demo/, wp-content/themes/)
+# !demo/**/*.jpg
+# !demo/**/*.jpeg
+# !demo/**/*.png
+# !wp-content/themes/**/*.jpg
+# !wp-content/themes/**/*.jpeg
+# !wp-content/themes/**/*.png
 
 # Fichiers de scripts de lancement locaux (optionnel)
 # demo/lancer.bat
