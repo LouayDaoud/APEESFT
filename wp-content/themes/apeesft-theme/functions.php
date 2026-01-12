@@ -33,6 +33,7 @@ function apeesft_setup() {
     // Enregistrement des menus
     register_nav_menus(array(
         'primary' => __('Menu Principal', 'apeesft'),
+        'secondary' => __('Menu Secondaire', 'apeesft'),
         'footer' => __('Menu Footer', 'apeesft'),
     ));
 }

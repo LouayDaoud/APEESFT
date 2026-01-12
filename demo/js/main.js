@@ -248,5 +248,38 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         });
     }
+    
+    // Marquer le lien actif dans le menu
+    function setActiveMenuItem() {
+        const currentPath = window.location.pathname;
+        const currentPage = currentPath.split('/').pop() || 'index.html';
+        const navLinks = document.querySelectorAll('.main-nav a');
+        
+        navLinks.forEach(link => {
+            // Retirer d'abord toutes les classes active
+            link.classList.remove('active');
+            if (link.parentElement) {
+                link.parentElement.classList.remove('active');
+            }
+            
+            const linkHref = link.getAttribute('href');
+            const linkPage = linkHref.split('/').pop();
+            
+            // Comparer les noms de fichiers
+            if (linkPage === currentPage || 
+                (currentPage === '' && linkPage === 'index.html') ||
+                (currentPage === 'index.html' && linkPage === 'index.html') ||
+                (currentPath.includes(linkPage) && linkPage !== 'index.html')) {
+                link.classList.add('active');
+                if (link.parentElement) {
+                    link.parentElement.classList.add('active');
+                }
+            }
+        });
+    }
+    
+    // Exécuter immédiatement et après le chargement complet
+    setActiveMenuItem();
+    window.addEventListener('load', setActiveMenuItem);
 });
 

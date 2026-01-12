@@ -47,15 +47,43 @@ get_header();
                 <input type="tel" id="parent_telephone" name="parent_telephone" required>
             </div>
 
-            <h2 style="color: #1e3c72; margin: 2rem 0 1.5rem;">Établissement(s) de scolarisation</h2>
-            <div class="checkbox-group">
+            <h2 style="color: var(--primary-color); margin: 2rem 0 1.5rem; font-size: 1.5rem; font-weight: 700; padding-bottom: 0.75rem; border-bottom: 2px solid var(--border-color);">Établissement(s) de scolarisation</h2>
+            <div class="checkbox-group" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; margin-bottom: 1rem;">
                 <div class="checkbox-item">
-                    <input type="checkbox" id="etab_lycee" name="etablissements[]" value="Lycée Pierre Mendès France">
-                    <label for="etab_lycee">Lycée Pierre Mendès France</label>
+                    <input type="checkbox" id="etab_pmf" name="etablissements[]" value="PMF">
+                    <label for="etab_pmf">PMF</label>
                 </div>
                 <div class="checkbox-item">
-                    <input type="checkbox" id="etab_autre" name="etablissements[]" value="Autre établissement">
-                    <label for="etab_autre">Autre établissement</label>
+                    <input type="checkbox" id="etab_lgf" name="etablissements[]" value="LGF">
+                    <label for="etab_lgf">LGF</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="etab_philippe_seguin" name="etablissements[]" value="Philippe Seguin">
+                    <label for="etab_philippe_seguin">Philippe Seguin</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="etab_paul_verlaine" name="etablissements[]" value="Paul Verlaine">
+                    <label for="etab_paul_verlaine">Paul Verlaine</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="etab_george_sand" name="etablissements[]" value="George Sand">
+                    <label for="etab_george_sand">George Sand</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="etab_jean_giono" name="etablissements[]" value="Jean Giono">
+                    <label for="etab_jean_giono">Jean Giono</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="etab_robert_desnos" name="etablissements[]" value="Robert Desnos">
+                    <label for="etab_robert_desnos">Robert Desnos</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="etab_georges_brassens" name="etablissements[]" value="Georges Brassens">
+                    <label for="etab_georges_brassens">Georges Brassens</label>
+                </div>
+                <div class="checkbox-item">
+                    <input type="checkbox" id="etab_lfi_sousse" name="etablissements[]" value="LFI Sousse">
+                    <label for="etab_lfi_sousse">LFI Sousse</label>
                 </div>
             </div>
 
@@ -89,6 +117,51 @@ get_header();
 
             <div id="form-message" style="margin-top: 1rem; padding: 1rem; border-radius: 5px; display: none;"></div>
         </form>
+
+        <!-- FAQ Section -->
+        <div style="max-width: 900px; margin: 3rem auto 0; background: white; padding: 3rem; border-radius: 10px; box-shadow: 0 3px 15px rgba(0,0,0,0.1);">
+            <h2 style="color: #1e3c72; margin-bottom: 2rem; text-align: center;">FAQ sur l'adhésion et l'assurance</h2>
+            
+            <div class="faq-item" style="margin-bottom: 1.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid #eee;">
+                <h3 style="color: var(--primary-color); margin-bottom: 0.75rem; font-size: 1.1rem; font-weight: 600;">Qu'est-ce que l'adhésion à l'APEESFT ?</h3>
+                <p style="color: var(--text-light); line-height: 1.7; margin: 0;">L'adhésion à l'APEESFT permet de devenir membre de l'association et de bénéficier de ses services, de participer aux assemblées générales et de contribuer à la vie scolaire de vos enfants.</p>
+            </div>
+
+            <div class="faq-item" style="margin-bottom: 1.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid #eee;">
+                <h3 style="color: var(--primary-color); margin-bottom: 0.75rem; font-size: 1.1rem; font-weight: 600;">Quel est le montant de la cotisation ?</h3>
+                <p style="color: var(--text-light); line-height: 1.7; margin: 0;">La cotisation annuelle est de 30 DT par famille, quel que soit le nombre d'enfants scolarisés dans les établissements français en Tunisie.</p>
+            </div>
+
+            <div class="faq-item" style="margin-bottom: 1.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid #eee;">
+                <h3 style="color: var(--primary-color); margin-bottom: 0.75rem; font-size: 1.1rem; font-weight: 600;">Qu'est-ce que l'assurance proposée ?</h3>
+                <p style="color: var(--text-light); line-height: 1.7; margin: 0;">L'assurance scolaire couvre votre enfant pendant les activités scolaires et périscolaires. Le montant est de 15 DT par enfant et par an.</p>
+            </div>
+
+            <div class="faq-item" style="margin-bottom: 1.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid #eee;">
+                <h3 style="color: var(--primary-color); margin-bottom: 0.75rem; font-size: 1.1rem; font-weight: 600;">Dois-je adhérer si j'ai plusieurs enfants ?</h3>
+                <p style="color: var(--text-light); line-height: 1.7; margin: 0;">Non, la cotisation est unique par famille (30 DT), mais l'assurance doit être souscrite pour chaque enfant (15 DT par enfant).</p>
+            </div>
+
+            <div class="faq-item" style="margin-bottom: 1.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid #eee;">
+                <h3 style="color: var(--primary-color); margin-bottom: 0.75rem; font-size: 1.1rem; font-weight: 600;">Quand dois-je renouveler mon adhésion ?</h3>
+                <p style="color: var(--text-light); line-height: 1.7; margin: 0;">L'adhésion est valable pour une année scolaire. Le renouvellement se fait chaque année au début de l'année scolaire.</p>
+            </div>
+
+            <div class="faq-item" style="margin-bottom: 1.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid #eee;">
+                <h3 style="color: var(--primary-color); margin-bottom: 0.75rem; font-size: 1.1rem; font-weight: 600;">Comment puis-je payer mon adhésion ?</h3>
+                <p style="color: var(--text-light); line-height: 1.7; margin: 0;">Après avoir soumis votre formulaire d'adhésion, vous recevrez les instructions de paiement par email. Plusieurs modes de paiement sont acceptés.</p>
+            </div>
+
+            <div class="faq-item" style="margin-bottom: 1.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid #eee;">
+                <h3 style="color: var(--primary-color); margin-bottom: 0.75rem; font-size: 1.1rem; font-weight: 600;">L'assurance est-elle obligatoire ?</h3>
+                <p style="color: var(--text-light); line-height: 1.7; margin: 0;">L'assurance scolaire n'est pas obligatoire, mais elle est fortement recommandée pour couvrir votre enfant lors des activités scolaires et des sorties.</p>
+            </div>
+
+            <div class="faq-item" style="margin-bottom: 0;">
+                <h3 style="color: var(--primary-color); margin-bottom: 0.75rem; font-size: 1.1rem; font-weight: 600;">Puis-je adhérer en cours d'année ?</h3>
+                <p style="color: var(--text-light); line-height: 1.7; margin: 0;">Oui, vous pouvez adhérer à tout moment de l'année. L'adhésion sera valable jusqu'à la fin de l'année scolaire en cours.</p>
+            </div>
+        </div>
     </div>
 </section>
 

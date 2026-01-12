@@ -17,7 +17,7 @@
                 </a>
             </div>
             <button class="mobile-menu-toggle" aria-label="Menu mobile">
-                <span></span>
+                <span></span>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           
                 <span></span>
                 <span></span>
             </button>
@@ -29,7 +29,7 @@
                     'menu_class' => '',
                     'fallback_cb' => 'apeesft_default_menu',
                     'link_before' => '',
-                    'link_after' => ' <span class="chevron">▼</span>',
+                    'link_after' => '',
                 ));
                 ?>
             </nav>
@@ -41,12 +41,13 @@
 // Menu par défaut si aucun menu n'est configuré
 function apeesft_default_menu() {
     echo '<ul>';
-    echo '<li><a href="' . esc_url(home_url('/')) . '">Accueil <span class="chevron">▼</span></a></li>';
-    echo '<li><a href="' . esc_url(home_url('/qui-sommes-nous')) . '">Qui sommes-nous ? <span class="chevron">▼</span></a></li>';
-    echo '<li><a href="' . esc_url(home_url('/adhesion-assurance')) . '">Adhésion & Assurance <span class="chevron">▼</span></a></li>';
-    echo '<li><a href="' . esc_url(home_url('/bilans-transparence')) . '">Bilans & Transparence <span class="chevron">▼</span></a></li>';
-    echo '<li><a href="' . esc_url(home_url('/nos-actions')) . '">Nos actions <span class="chevron">▼</span></a></li>';
-    echo '<li><a href="' . esc_url(home_url('/ressources-partenariats')) . '">Ressources <span class="chevron">▼</span></a></li>';
+    echo '<li><a href="' . esc_url(home_url('/qui-sommes-nous')) . '">Qui sommes-nous ?</a></li>';
+    echo '<li><a href="' . esc_url(home_url('/adhesion-assurance')) . '">Adhésion & Assurance</a></li>';
+    echo '<li><a href="' . esc_url(home_url('/bilans-transparence')) . '">Bilans & Transparence</a></li>';
+    echo '<li><a href="' . esc_url(home_url('/nos-actions')) . '">Nos actions</a></li>';
+    echo '<li><a href="' . esc_url(home_url('/ressources-partenariats')) . '">Ressources</a></li>';
+    echo '<li><a href="' . esc_url(home_url('/evenements')) . '">Événements</a></li>';
+    echo '<li><a href="' . esc_url(home_url('/espace-adherents')) . '">Espace adhérents</a></li>';
     echo '<li><a href="' . esc_url(home_url('/contact')) . '">Contact</a></li>';
     echo '</ul>';
 }

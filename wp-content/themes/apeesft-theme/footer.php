@@ -7,6 +7,7 @@
                     <div class="footer-logo-text">
                         <h2>APEESFT</h2>
                         <p>Association des parents d'élèves des Établissements scolaires français en Tunisie</p>
+                        <p style="margin-top: 0.5rem; font-size: 0.9rem; color: var(--text-light);">DEPUIS 1984</p>
                     </div>
                 </div>
             </div>
@@ -41,7 +42,7 @@
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; <?php echo date('Y'); ?> Ecole sans peur | By nuvorsys</p>
+            <p>&copy; 2026 Ecole sans peur | By nuvorsys</p>
         </div>
     </div>
     <button class="scroll-to-top" aria-label="Retour en haut">

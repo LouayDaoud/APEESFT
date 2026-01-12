@@ -23,12 +23,13 @@
                 </button>
                 <nav class="main-nav">
                     <ul>
-                        <li><a href="index.html">Accueil</a></li>
                         <li><a href="qui-sommes-nous.html">Qui sommes-nous ?</a></li>
                         <li><a href="adhesion.html">Adhésion & Assurance</a></li>
                         <li><a href="bilans.html">Bilans & Transparence</a></li>
                         <li><a href="nos-actions.html">Nos actions</a></li>
                         <li><a href="ressources.html">Ressources</a></li>
+                        <li><a href="evenements.html">Événements</a></li>
+                        <li><a href="espace-adherents.html">Espace adhérents</a></li>
                         <li><a href="contact.html">Contact</a></li>
                     </ul>
                 </nav>
@@ -78,15 +79,43 @@
                     <input type="tel" id="parent_telephone" name="parent_telephone" required>
                 </div>
 
-                <h2 style="color: #1e3c72; margin: 2rem 0 1.5rem;">Établissement(s) de scolarisation</h2>
-                <div class="checkbox-group">
+                <h2 style="color: var(--primary-color); margin: 2rem 0 1.5rem; font-size: 1.5rem; font-weight: 700; padding-bottom: 0.75rem; border-bottom: 2px solid var(--border-color);">Établissement(s) de scolarisation</h2>
+                <div class="checkbox-group" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; margin-bottom: 1rem;">
                     <div class="checkbox-item">
-                        <input type="checkbox" id="etab_lycee" name="etablissements[]" value="Lycée Pierre Mendès France">
-                        <label for="etab_lycee">Lycée Pierre Mendès France</label>
+                        <input type="checkbox" id="etab_pmf" name="etablissements[]" value="PMF">
+                        <label for="etab_pmf">PMF</label>
                     </div>
                     <div class="checkbox-item">
-                        <input type="checkbox" id="etab_autre" name="etablissements[]" value="Autre établissement">
-                        <label for="etab_autre">Autre établissement</label>
+                        <input type="checkbox" id="etab_lgf" name="etablissements[]" value="LGF">
+                        <label for="etab_lgf">LGF</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="etab_philippe_seguin" name="etablissements[]" value="Philippe Seguin">
+                        <label for="etab_philippe_seguin">Philippe Seguin</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="etab_paul_verlaine" name="etablissements[]" value="Paul Verlaine">
+                        <label for="etab_paul_verlaine">Paul Verlaine</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="etab_george_sand" name="etablissements[]" value="George Sand">
+                        <label for="etab_george_sand">George Sand</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="etab_jean_giono" name="etablissements[]" value="Jean Giono">
+                        <label for="etab_jean_giono">Jean Giono</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="etab_robert_desnos" name="etablissements[]" value="Robert Desnos">
+                        <label for="etab_robert_desnos">Robert Desnos</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="etab_georges_brassens" name="etablissements[]" value="Georges Brassens">
+                        <label for="etab_georges_brassens">Georges Brassens</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="etab_lfi_sousse" name="etablissements[]" value="LFI Sousse">
+                        <label for="etab_lfi_sousse">LFI Sousse</label>
                     </div>
                 </div>
 
@@ -120,6 +149,51 @@
 
                 <div id="form-message" style="margin-top: 1rem; padding: 1rem; border-radius: 5px; display: none;"></div>
             </form>
+
+            <!-- FAQ Section -->
+            <div style="max-width: 900px; margin: 3rem auto 0; background: white; padding: 3rem; border-radius: 10px; box-shadow: 0 3px 15px rgba(0,0,0,0.1);">
+                <h2 style="color: #1e3c72; margin-bottom: 2rem; text-align: center;">FAQ sur l'adhésion et l'assurance</h2>
+                
+                <div class="faq-item" style="margin-bottom: 1.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid #eee;">
+                    <h3 style="color: var(--primary-color); margin-bottom: 0.75rem; font-size: 1.1rem; font-weight: 600;">Qu'est-ce que l'adhésion à l'APEESFT ?</h3>
+                    <p style="color: var(--text-light); line-height: 1.7; margin: 0;">L'adhésion à l'APEESFT permet de devenir membre de l'association et de bénéficier de ses services, de participer aux assemblées générales et de contribuer à la vie scolaire de vos enfants.</p>
+                </div>
+
+                <div class="faq-item" style="margin-bottom: 1.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid #eee;">
+                    <h3 style="color: var(--primary-color); margin-bottom: 0.75rem; font-size: 1.1rem; font-weight: 600;">Quel est le montant de la cotisation ?</h3>
+                    <p style="color: var(--text-light); line-height: 1.7; margin: 0;">La cotisation annuelle est de 30 DT par famille, quel que soit le nombre d'enfants scolarisés dans les établissements français en Tunisie.</p>
+                </div>
+
+                <div class="faq-item" style="margin-bottom: 1.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid #eee;">
+                    <h3 style="color: var(--primary-color); margin-bottom: 0.75rem; font-size: 1.1rem; font-weight: 600;">Qu'est-ce que l'assurance proposée ?</h3>
+                    <p style="color: var(--text-light); line-height: 1.7; margin: 0;">L'assurance scolaire couvre votre enfant pendant les activités scolaires et périscolaires. Le montant est de 15 DT par enfant et par an.</p>
+                </div>
+
+                <div class="faq-item" style="margin-bottom: 1.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid #eee;">
+                    <h3 style="color: var(--primary-color); margin-bottom: 0.75rem; font-size: 1.1rem; font-weight: 600;">Dois-je adhérer si j'ai plusieurs enfants ?</h3>
+                    <p style="color: var(--text-light); line-height: 1.7; margin: 0;">Non, la cotisation est unique par famille (30 DT), mais l'assurance doit être souscrite pour chaque enfant (15 DT par enfant).</p>
+                </div>
+
+                <div class="faq-item" style="margin-bottom: 1.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid #eee;">
+                    <h3 style="color: var(--primary-color); margin-bottom: 0.75rem; font-size: 1.1rem; font-weight: 600;">Quand dois-je renouveler mon adhésion ?</h3>
+                    <p style="color: var(--text-light); line-height: 1.7; margin: 0;">L'adhésion est valable pour une année scolaire. Le renouvellement se fait chaque année au début de l'année scolaire.</p>
+                </div>
+
+                <div class="faq-item" style="margin-bottom: 1.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid #eee;">
+                    <h3 style="color: var(--primary-color); margin-bottom: 0.75rem; font-size: 1.1rem; font-weight: 600;">Comment puis-je payer mon adhésion ?</h3>
+                    <p style="color: var(--text-light); line-height: 1.7; margin: 0;">Après avoir soumis votre formulaire d'adhésion, vous recevrez les instructions de paiement par email. Plusieurs modes de paiement sont acceptés.</p>
+                </div>
+
+                <div class="faq-item" style="margin-bottom: 1.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid #eee;">
+                    <h3 style="color: var(--primary-color); margin-bottom: 0.75rem; font-size: 1.1rem; font-weight: 600;">L'assurance est-elle obligatoire ?</h3>
+                    <p style="color: var(--text-light); line-height: 1.7; margin: 0;">L'assurance scolaire n'est pas obligatoire, mais elle est fortement recommandée pour couvrir votre enfant lors des activités scolaires et des sorties.</p>
+                </div>
+
+                <div class="faq-item" style="margin-bottom: 0;">
+                    <h3 style="color: var(--primary-color); margin-bottom: 0.75rem; font-size: 1.1rem; font-weight: 600;">Puis-je adhérer en cours d'année ?</h3>
+                    <p style="color: var(--text-light); line-height: 1.7; margin: 0;">Oui, vous pouvez adhérer à tout moment de l'année. L'adhésion sera valable jusqu'à la fin de l'année scolaire en cours.</p>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -127,31 +201,55 @@
     <footer class="site-footer">
         <div class="container">
             <div class="footer-content">
-                <div class="footer-section">
-                    <h3>APEESFT</h3>
-                    <p>Association des Parents d'Élèves de l'École Secondaire Franco-Tunisienne</p>
+                <div class="footer-logo-section">
+                    <div class="footer-logo">
+                        <img src="logo.jpeg" alt="APEESFT" class="footer-logo-image">
+                        <div class="footer-logo-text">
+                            <h2>APEESFT</h2>
+                            <p>Association des parents d'élèves des Établissements scolaires français en Tunisie</p>
+                            <p style="margin-top: 0.5rem; font-size: 0.9rem; color: var(--text-light);">DEPUIS 1984</p>
+                        </div>
+                    </div>
                 </div>
                 <div class="footer-section">
                     <h3>Liens utiles</h3>
-                    <a href="#">Statuts</a>
-                    <a href="https://ecole-sans-peur.tn" target="_blank">École Sans Peur</a>
-                    <a href="https://www.aefe.fr" target="_blank">AEFE</a>
-                    <a href="https://www.fapee.com" target="_blank">FAPEE</a>
+                    <a href="#">Code pénal tunisien</a>
+                    <a href="#">Qu'est-ce que le harcèlement?</a>
+                    <a href="#">Harcèlement scolaire au collège et au lycée</a>
+                </div>
+                <div class="footer-section">
+                    <h3>Pages</h3>
+                    <a href="index.html">Accueil</a>
+                    <a href="#">Blog</a>
+                    <a href="contact.html">Contact</a>
                 </div>
                 <div class="footer-section">
                     <h3>Contact</h3>
-                    <p>Email : contact@apeesft.tn</p>
-                </div>
-                <div class="footer-section">
-                    <h3>Mentions légales</h3>
-                    <a href="#">Mentions légales</a>
-                    <a href="#">Politique de confidentialité</a>
+                    <p><strong>Email:</strong> cd@apeesft.org</p>
+                    <p><strong>Adresse:</strong> 16 rue Othman Kaak au Lycée Gustave-Flaubert<br>2070 La Marsa, La Marsa, Tunisia</p>
+                    <div class="social-icons">
+                        <a href="https://www.facebook.com/Apeesft/?locale=fr_FR" target="_blank" class="social-icon facebook" aria-label="Facebook">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                            </svg>
+                        </a>
+                        <a href="https://www.instagram.com/apeesft" target="_blank" class="social-icon instagram" aria-label="Instagram">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                            </svg>
+                        </a>
+                    </div>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2024 APEESFT. Tous droits réservés.</p>
+                <p>&copy; 2026 Ecole sans peur | By nuvorsys</p>
             </div>
         </div>
+        <button class="scroll-to-top" aria-label="Retour en haut">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M18 15l-6-6-6 6"/>
+            </svg>
+        </button>
     </footer>
 
     <script src="js/main.js"></script>
