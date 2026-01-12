@@ -5,7 +5,13 @@ jQuery(document).ready(function($) {
     const navLinks = $('.main-nav a');
     
     if (mobileMenuToggle.length && mainNav.length) {
-        mobileMenuToggle.on('click', function() {
+        // S'assurer que le menu est fermé au chargement
+        mobileMenuToggle.removeClass('active');
+        mainNav.removeClass('active');
+        $('body').css('overflow', '');
+        
+        mobileMenuToggle.on('click', function(e) {
+            e.stopPropagation();
             $(this).toggleClass('active');
             mainNav.toggleClass('active');
             $('body').css('overflow', mainNav.hasClass('active') ? 'hidden' : '');

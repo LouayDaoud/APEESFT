@@ -5,7 +5,13 @@ document.addEventListener('DOMContentLoaded', function() {
     const navLinks = document.querySelectorAll('.main-nav a');
     
     if (mobileMenuToggle && mainNav) {
-        mobileMenuToggle.addEventListener('click', function() {
+        // S'assurer que le menu est fermé au chargement
+        mobileMenuToggle.classList.remove('active');
+        mainNav.classList.remove('active');
+        document.body.style.overflow = '';
+        
+        mobileMenuToggle.addEventListener('click', function(e) {
+            e.stopPropagation();
             mobileMenuToggle.classList.toggle('active');
             mainNav.classList.toggle('active');
             document.body.style.overflow = mainNav.classList.contains('active') ? 'hidden' : '';
@@ -20,9 +26,10 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         });
         
-        // Fermer le menu quand on clique en dehors
-        mainNav.addEventListener('click', function(e) {
-            if (e.target === mainNav) {
+        // Fermer le menu quand on clique sur l'overlay
+        const overlay = document.querySelector('.main-nav::before');
+        document.addEventListener('click', function(e) {
+            if (mainNav.classList.contains('active') && !mainNav.contains(e.target) && e.target !== mobileMenuToggle) {
                 mobileMenuToggle.classList.remove('active');
                 mainNav.classList.remove('active');
                 document.body.style.overflow = '';
