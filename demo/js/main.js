@@ -329,6 +329,45 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
+    // Animations au scroll
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
+    
+    const observer = new IntersectionObserver(function(entries) {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
+        });
+    }, observerOptions);
+    
+    // Observer tous les éléments avec les classes d'animation
+    document.querySelectorAll('.fade-in, .slide-in-left, .slide-in-right, .scale-in').forEach(el => {
+        observer.observe(el);
+    });
+    
+    // Ajouter des animations aux cards et sections
+    const cards = document.querySelectorAll('.engagement-card, .vision-card, .quick-card, .child-item');
+    cards.forEach((card, index) => {
+        card.style.opacity = '0';
+        card.style.transform = 'translateY(30px)';
+        card.style.transition = `all 0.6s cubic-bezier(0.4, 0, 0.2, 1) ${index * 0.1}s`;
+        
+        const cardObserver = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                    cardObserver.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+        
+        cardObserver.observe(card);
+    });
+    
     // Marquer le lien actif dans le menu
     function setActiveMenuItem() {
         const currentPath = window.location.pathname;
