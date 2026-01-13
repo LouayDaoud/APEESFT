@@ -5,30 +5,63 @@ jQuery(document).ready(function($) {
     const navLinks = $('.main-nav a');
     
     if (mobileMenuToggle.length && mainNav.length) {
-        // S'assurer que le menu est fermé au chargement
+        // S'assurer que le menu est fermé au chargement - FORCER
         mobileMenuToggle.removeClass('active');
         mainNav.removeClass('active');
+        mainNav.css('display', 'none');
         $('body').css('overflow', '');
+        
+        // Vérifier la largeur de l'écran
+        function checkScreenSize() {
+            if ($(window).width() <= 768) {
+                // Sur mobile, cacher le menu par défaut
+                if (!mainNav.hasClass('active')) {
+                    mainNav.css('display', 'none');
+                }
+            } else {
+                // Sur desktop, afficher le menu normal
+                mainNav.css('display', '');
+            }
+        }
+        
+        // Vérifier au chargement et au redimensionnement
+        checkScreenSize();
+        $(window).on('resize', checkScreenSize);
         
         mobileMenuToggle.on('click', function(e) {
             e.stopPropagation();
-            $(this).toggleClass('active');
-            mainNav.toggleClass('active');
-            $('body').css('overflow', mainNav.hasClass('active') ? 'hidden' : '');
+            const isActive = mainNav.hasClass('active');
+            
+            if (isActive) {
+                // Fermer le menu
+                mobileMenuToggle.removeClass('active');
+                mainNav.removeClass('active');
+                mainNav.css('display', 'none');
+                $('body').css('overflow', '');
+            } else {
+                // Ouvrir le menu
+                mobileMenuToggle.addClass('active');
+                mainNav.addClass('active');
+                mainNav.css('display', 'block');
+                $('body').css('overflow', 'hidden');
+            }
         });
         
         // Fermer le menu quand on clique sur un lien
         navLinks.on('click', function() {
             mobileMenuToggle.removeClass('active');
             mainNav.removeClass('active');
+            mainNav.css('display', 'none');
             $('body').css('overflow', '');
         });
         
         // Fermer le menu quand on clique en dehors
         $(document).on('click', function(e) {
-            if (!$(e.target).closest('.main-nav, .mobile-menu-toggle').length) {
+            if (mainNav.hasClass('active') && 
+                !$(e.target).closest('.main-nav, .mobile-menu-toggle').length) {
                 mobileMenuToggle.removeClass('active');
                 mainNav.removeClass('active');
+                mainNav.css('display', 'none');
                 $('body').css('overflow', '');
             }
         });
