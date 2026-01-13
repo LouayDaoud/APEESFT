@@ -36,13 +36,21 @@ document.addEventListener('DOMContentLoaded', function() {
                 // Fermer le menu
                 mobileMenuToggle.classList.remove('active');
                 mainNav.classList.remove('active');
-                mainNav.style.display = 'none';
+                setTimeout(() => {
+                    if (!mainNav.classList.contains('active')) {
+                        mainNav.style.display = 'none';
+                    }
+                }, 300);
                 document.body.style.overflow = '';
             } else {
-                // Ouvrir le menu
+                // Ouvrir le menu - FORCER l'affichage
+                mainNav.style.display = 'block';
+                mainNav.style.visibility = 'visible';
+                mainNav.style.opacity = '1';
+                // Forcer le reflow pour s'assurer que le style est appliqué
+                mainNav.offsetHeight;
                 mobileMenuToggle.classList.add('active');
                 mainNav.classList.add('active');
-                mainNav.style.display = 'block';
                 document.body.style.overflow = 'hidden';
             }
         });

@@ -36,13 +36,23 @@ jQuery(document).ready(function($) {
                 // Fermer le menu
                 mobileMenuToggle.removeClass('active');
                 mainNav.removeClass('active');
-                mainNav.css('display', 'none');
+                setTimeout(function() {
+                    if (!mainNav.hasClass('active')) {
+                        mainNav.css('display', 'none');
+                    }
+                }, 300);
                 $('body').css('overflow', '');
             } else {
-                // Ouvrir le menu
+                // Ouvrir le menu - FORCER l'affichage
+                mainNav.css({
+                    'display': 'block',
+                    'visibility': 'visible',
+                    'opacity': '1'
+                });
+                // Forcer le reflow
+                mainNav[0].offsetHeight;
                 mobileMenuToggle.addClass('active');
                 mainNav.addClass('active');
-                mainNav.css('display', 'block');
                 $('body').css('overflow', 'hidden');
             }
         });
