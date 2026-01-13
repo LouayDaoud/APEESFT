@@ -30,6 +30,7 @@ document.addEventListener('DOMContentLoaded', function() {
         
         mobileMenuToggle.addEventListener('click', function(e) {
             e.stopPropagation();
+            e.preventDefault();
             const isActive = mainNav.classList.contains('active');
             
             if (isActive) {
@@ -39,15 +40,32 @@ document.addEventListener('DOMContentLoaded', function() {
                 setTimeout(() => {
                     if (!mainNav.classList.contains('active')) {
                         mainNav.style.display = 'none';
+                        mainNav.style.visibility = 'hidden';
                     }
                 }, 300);
                 document.body.style.overflow = '';
             } else {
-                // Ouvrir le menu - FORCER l'affichage
+                // Ouvrir le menu - FORCER l'affichage de TOUS les éléments
                 mainNav.style.display = 'block';
                 mainNav.style.visibility = 'visible';
                 mainNav.style.opacity = '1';
-                // Forcer le reflow pour s'assurer que le style est appliqué
+                
+                // Forcer l'affichage de tous les éléments de la liste
+                const navItems = mainNav.querySelectorAll('ul li');
+                navItems.forEach(item => {
+                    item.style.display = 'block';
+                    item.style.visibility = 'visible';
+                    item.style.opacity = '1';
+                    item.style.height = 'auto';
+                    const link = item.querySelector('a');
+                    if (link) {
+                        link.style.display = 'block';
+                        link.style.visibility = 'visible';
+                        link.style.opacity = '1';
+                    }
+                });
+                
+                // Forcer le reflow
                 mainNav.offsetHeight;
                 mobileMenuToggle.classList.add('active');
                 mainNav.classList.add('active');

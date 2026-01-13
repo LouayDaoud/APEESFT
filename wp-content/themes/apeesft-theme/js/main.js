@@ -30,6 +30,7 @@ jQuery(document).ready(function($) {
         
         mobileMenuToggle.on('click', function(e) {
             e.stopPropagation();
+            e.preventDefault();
             const isActive = mainNav.hasClass('active');
             
             if (isActive) {
@@ -38,17 +39,36 @@ jQuery(document).ready(function($) {
                 mainNav.removeClass('active');
                 setTimeout(function() {
                     if (!mainNav.hasClass('active')) {
-                        mainNav.css('display', 'none');
+                        mainNav.css({
+                            'display': 'none',
+                            'visibility': 'hidden'
+                        });
                     }
                 }, 300);
                 $('body').css('overflow', '');
             } else {
-                // Ouvrir le menu - FORCER l'affichage
+                // Ouvrir le menu - FORCER l'affichage de TOUS les éléments
                 mainNav.css({
                     'display': 'block',
                     'visibility': 'visible',
                     'opacity': '1'
                 });
+                
+                // Forcer l'affichage de tous les éléments de la liste
+                mainNav.find('ul li').each(function() {
+                    $(this).css({
+                        'display': 'block',
+                        'visibility': 'visible',
+                        'opacity': '1',
+                        'height': 'auto'
+                    });
+                    $(this).find('a').css({
+                        'display': 'block',
+                        'visibility': 'visible',
+                        'opacity': '1'
+                    });
+                });
+                
                 // Forcer le reflow
                 mainNav[0].offsetHeight;
                 mobileMenuToggle.addClass('active');

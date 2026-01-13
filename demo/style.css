@@ -912,15 +912,11 @@ body {
     }
     
     .mobile-menu-toggle {
-        display: flex;
+        display: flex !important;
         order: 2;
     }
     
-    /* Cacher le menu horizontal normal sur mobile */
-    .main-nav:not(.active) {
-        display: none !important;
-    }
-    
+    /* CACHER COMPLÈTEMENT le menu horizontal sur mobile */
     .main-nav {
         position: fixed !important;
         top: 0 !important;
@@ -935,16 +931,20 @@ body {
         overflow-y: auto !important;
         overflow-x: hidden !important;
         padding-top: 80px !important;
-        display: block !important;
+        display: none !important;
         flex: none !important;
         justify-content: flex-start !important;
         align-items: flex-start !important;
     }
     
+    /* Quand le menu est actif, l'afficher */
     .main-nav.active {
-        right: 0;
+        right: 0 !important;
+        display: block !important;
+        visibility: visible !important;
     }
     
+    /* FORCER l'affichage de tous les éléments de la liste */
     .main-nav ul {
         flex-direction: column !important;
         gap: 0 !important;
@@ -953,20 +953,30 @@ body {
         margin: 0 !important;
         display: block !important;
         height: auto !important;
+        min-height: auto !important;
+        max-height: none !important;
         align-items: stretch !important;
         list-style: none !important;
+        overflow: visible !important;
     }
     
+    /* FORCER l'affichage de chaque élément de liste */
     .main-nav ul li {
         width: 100% !important;
-        border-bottom: 1px solid var(--border-color);
+        border-bottom: 1px solid var(--border-color) !important;
         display: block !important;
         height: auto !important;
+        min-height: auto !important;
+        max-height: none !important;
         margin: 0 !important;
         padding: 0 !important;
         flex: none !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        overflow: visible !important;
     }
     
+    /* FORCER l'affichage de chaque lien */
     .main-nav ul li a {
         display: block !important;
         padding: 1.25rem 1.5rem !important;
@@ -975,7 +985,11 @@ body {
         color: var(--text-dark) !important;
         text-decoration: none !important;
         height: auto !important;
+        min-height: auto !important;
         line-height: 1.5 !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        overflow: visible !important;
     }
     
     .main-nav ul li a:hover {
