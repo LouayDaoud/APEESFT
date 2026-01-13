@@ -30,7 +30,6 @@ document.addEventListener('DOMContentLoaded', function() {
         
         mobileMenuToggle.addEventListener('click', function(e) {
             e.stopPropagation();
-            e.preventDefault();
             const isActive = mainNav.classList.contains('active');
             
             if (isActive) {
@@ -76,18 +75,14 @@ document.addEventListener('DOMContentLoaded', function() {
         // Fermer le menu quand on clique sur un lien - SANS empêcher la navigation
         navLinks.forEach(link => {
             link.addEventListener('click', function(e) {
-                // NE PAS utiliser preventDefault() ou stopPropagation() - laisser le lien fonctionner
-                // S'assurer que le lien est cliquable
-                e.stopPropagation = function() {}; // Désactiver stopPropagation
-                
-                // Fermer le menu après un court délai pour permettre la navigation
-                setTimeout(() => {
-                    mobileMenuToggle.classList.remove('active');
-                    mainNav.classList.remove('active');
-                    mainNav.style.display = 'none';
-                    document.body.style.overflow = '';
-                }, 50);
-            }, true); // Utiliser capture phase pour intercepter avant l'overlay
+                // NE PAS utiliser preventDefault() - laisser le lien fonctionner normalement
+                // Fermer le menu immédiatement pour permettre la navigation
+                mobileMenuToggle.classList.remove('active');
+                mainNav.classList.remove('active');
+                mainNav.style.display = 'none';
+                document.body.style.overflow = '';
+                // Ne pas empêcher la navigation - laisser le navigateur suivre le lien
+            });
         });
         
         // Fermer le menu quand on clique sur l'overlay (mais pas sur le menu lui-même)

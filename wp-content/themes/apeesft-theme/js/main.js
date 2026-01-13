@@ -79,15 +79,14 @@ jQuery(document).ready(function($) {
         
         // Fermer le menu quand on clique sur un lien - SANS empêcher la navigation
         navLinks.on('click', function(e) {
-            // NE PAS utiliser preventDefault() ou stopPropagation() - laisser le lien fonctionner
-            // Fermer le menu après un court délai pour permettre la navigation
-            setTimeout(function() {
-                mobileMenuToggle.removeClass('active');
-                mainNav.removeClass('active');
-                mainNav.css('display', 'none');
-                $('body').css('overflow', '');
-            }, 50);
-        }, true); // Utiliser capture phase
+            // NE PAS utiliser preventDefault() - laisser le lien fonctionner normalement
+            // Fermer le menu immédiatement pour permettre la navigation
+            mobileMenuToggle.removeClass('active');
+            mainNav.removeClass('active');
+            mainNav.css('display', 'none');
+            $('body').css('overflow', '');
+            // Ne pas empêcher la navigation - laisser le navigateur suivre le lien
+        });
         
         // Fermer le menu quand on clique sur l'overlay (mais pas sur le menu lui-même)
         $(document).on('click', function(e) {
