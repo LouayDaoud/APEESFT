@@ -76,26 +76,33 @@ document.addEventListener('DOMContentLoaded', function() {
         // Fermer le menu quand on clique sur un lien - SANS empêcher la navigation
         navLinks.forEach(link => {
             link.addEventListener('click', function(e) {
-                // NE PAS utiliser preventDefault() - laisser le lien fonctionner normalement
+                // NE PAS utiliser preventDefault() ou stopPropagation() - laisser le lien fonctionner
+                // S'assurer que le lien est cliquable
+                e.stopPropagation = function() {}; // Désactiver stopPropagation
+                
                 // Fermer le menu après un court délai pour permettre la navigation
                 setTimeout(() => {
                     mobileMenuToggle.classList.remove('active');
                     mainNav.classList.remove('active');
                     mainNav.style.display = 'none';
                     document.body.style.overflow = '';
-                }, 100);
-            });
+                }, 50);
+            }, true); // Utiliser capture phase pour intercepter avant l'overlay
         });
         
-        // Fermer le menu quand on clique en dehors - MAIS pas sur les liens
+        // Fermer le menu quand on clique sur l'overlay (mais pas sur le menu lui-même)
         document.addEventListener('click', function(e) {
-            // Vérifier si le clic est sur un lien
-            const clickedLink = e.target.closest('a');
-            if (clickedLink && mainNav.contains(clickedLink)) {
-                // C'est un lien du menu, laisser la navigation se faire
+            // Si le clic est sur un lien du menu, laisser faire
+            if (e.target.closest('.main-nav a')) {
                 return;
             }
             
+            // Si le clic est sur le menu lui-même (mais pas sur un lien), ne rien faire
+            if (e.target.closest('.main-nav ul')) {
+                return;
+            }
+            
+            // Si le clic est sur l'overlay ou en dehors, fermer le menu
             if (mainNav.classList.contains('active') && 
                 !mainNav.contains(e.target) && 
                 e.target !== mobileMenuToggle &&
