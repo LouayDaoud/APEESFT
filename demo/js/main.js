@@ -73,18 +73,29 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
         
-        // Fermer le menu quand on clique sur un lien
+        // Fermer le menu quand on clique sur un lien - SANS empêcher la navigation
         navLinks.forEach(link => {
-            link.addEventListener('click', function() {
-                mobileMenuToggle.classList.remove('active');
-                mainNav.classList.remove('active');
-                mainNav.style.display = 'none';
-                document.body.style.overflow = '';
+            link.addEventListener('click', function(e) {
+                // NE PAS utiliser preventDefault() - laisser le lien fonctionner normalement
+                // Fermer le menu après un court délai pour permettre la navigation
+                setTimeout(() => {
+                    mobileMenuToggle.classList.remove('active');
+                    mainNav.classList.remove('active');
+                    mainNav.style.display = 'none';
+                    document.body.style.overflow = '';
+                }, 100);
             });
         });
         
-        // Fermer le menu quand on clique en dehors
+        // Fermer le menu quand on clique en dehors - MAIS pas sur les liens
         document.addEventListener('click', function(e) {
+            // Vérifier si le clic est sur un lien
+            const clickedLink = e.target.closest('a');
+            if (clickedLink && mainNav.contains(clickedLink)) {
+                // C'est un lien du menu, laisser la navigation se faire
+                return;
+            }
+            
             if (mainNav.classList.contains('active') && 
                 !mainNav.contains(e.target) && 
                 e.target !== mobileMenuToggle &&

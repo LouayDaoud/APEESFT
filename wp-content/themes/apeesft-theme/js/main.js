@@ -77,16 +77,26 @@ jQuery(document).ready(function($) {
             }
         });
         
-        // Fermer le menu quand on clique sur un lien
-        navLinks.on('click', function() {
-            mobileMenuToggle.removeClass('active');
-            mainNav.removeClass('active');
-            mainNav.css('display', 'none');
-            $('body').css('overflow', '');
+        // Fermer le menu quand on clique sur un lien - SANS empêcher la navigation
+        navLinks.on('click', function(e) {
+            // NE PAS utiliser preventDefault() - laisser le lien fonctionner normalement
+            // Fermer le menu après un court délai pour permettre la navigation
+            setTimeout(function() {
+                mobileMenuToggle.removeClass('active');
+                mainNav.removeClass('active');
+                mainNav.css('display', 'none');
+                $('body').css('overflow', '');
+            }, 100);
         });
         
-        // Fermer le menu quand on clique en dehors
+        // Fermer le menu quand on clique en dehors - MAIS pas sur les liens
         $(document).on('click', function(e) {
+            // Vérifier si le clic est sur un lien du menu
+            if ($(e.target).closest('.main-nav a').length) {
+                // C'est un lien du menu, laisser la navigation se faire
+                return;
+            }
+            
             if (mainNav.hasClass('active') && 
                 !$(e.target).closest('.main-nav, .mobile-menu-toggle').length) {
                 mobileMenuToggle.removeClass('active');
